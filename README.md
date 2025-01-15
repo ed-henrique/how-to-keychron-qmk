@@ -5,6 +5,17 @@ So, you got a Keychron QMK compatible keyboard and want to mess with the firmwar
 > [!NOTE]
 > I just noticed that this is way too small to be a repo, and should really be a gist, but I can't bother. Also, as a disclaimer, I should note that this was tested in a **Linux** environment, more specifically **Ubuntu 22.04**. 
 
+## Table of Contents
+
+1. [Install QMK](#1-install-qmk)
+2. [Clone the Keychron QMK repo](#2-clone-the-keychron-qmk-repo)
+3. [Find out in which branch your keyboard is](#3-find-out-in-which-branch-your-keyboard-is)
+4. [Add the necessary submodules](#4-add-the-necessary-submodules)
+5. [Mess with the firmware as you like](#5-mess-with-the-firmware-as-you-like)
+6. [Compile](#6-compile)
+7. [Flash](#7-flash)
+8. [Gotchas](#8-gotchas)
+
 ## 1. Install QMK
 
 First and foremost, install QMK. It's pretty simple, just follow [this][1] for your OS. Mine is as follows:
@@ -29,7 +40,7 @@ Please, be mindful of one thing. You **MUST** replace your old `qmk_firmware` di
 
 ## 3. Find out in which branch your keyboard is
 
-Ok, this part is on you. By searching around the branches, I found that Q10 Max is inside `wireless_playground` and that K15 Pro is inside `bluetooth_playground`, so I would start searching there. You will find the keyboards in the directory `qmk_firmware/keyboards/keychron`.
+Ok, this part is on you. By searching around the branches, I found that both Q10 Max and K15 Pro are inside `wireless_playground`[^1], so I would start searching there. You will find the keyboards in the directory `qmk_firmware/keyboards/keychron`.
 
 ## 4. Add the necessary submodules
 
@@ -66,9 +77,19 @@ Just do this:
 
 Congratulations, you just customized your Keychron keyboard firmware.
 
+## 8. Gotchas
+
+Some things you should know when dealing with Keychron keyboards firmwares.
+
+### Tick counter reset by keyboard sleep
+
+As stated in the [Keychron FAQ](https://keychron.in/faq/), keyboards go into sleep mode automatically after 10 minutes of sitting idle. At every, or nearly every, keyboard sleep, the tick counter returned by `timer_read32()` resets[^2]. Keep this is mind when using it. More info about this in [#1](https://github.com/ed-henrique/how-to-keychron-qmk/issues/1).
+
 ## Oh no, something went wrong
 
 Please, open an issue in this repo, detailing what is your problem and how to fix it (if known). This sure helps other folks.
+
+[^1]: As [pointed out by u/PeterMortensenBlog](https://www.reddit.com/r/Keychron/comments/1i0v0bz/comment/m71o321/) you should not use the branch `bluetooth_playground` for K Pro series keyboards, since it can be considered stale, and may make debugging harder for you.
 
 [1]: https://docs.qmk.fm/newbs_getting_started
 [2]: https://github.com/Keychron/qmk_firmware
