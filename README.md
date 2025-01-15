@@ -83,7 +83,7 @@ Some things you should know when dealing with Keychron keyboards firmwares.
 
 ### Tick counter reset by keyboard sleep
 
-As stated in the [Keychron FAQ](https://keychron.in/faq/), keyboards go into sleep mode automatically after 10 minutes of sitting idle. At every, or nearly every, keyboard sleep, the tick counter returned by `timer_read32()` resets[^2]. Keep this is mind when using it. More info about this in [#1](https://github.com/ed-henrique/how-to-keychron-qmk/issues/1).
+As stated in the [Keychron FAQ](https://keychron.in/faq/), keyboards go into sleep mode automatically after 10 minutes of sitting idle. At every, or nearly every, keyboard sleep, the tick counter returned by `timer_read32()` resets. Keep this is mind when using it. More info about this in [#1](https://github.com/ed-henrique/how-to-keychron-qmk/issues/1).
 
 ## Oh no, something went wrong
 
